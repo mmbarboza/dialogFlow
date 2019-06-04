@@ -1,0 +1,7 @@
+.main {
+  background: linear-gradient(#ffffff, lightblue);
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
