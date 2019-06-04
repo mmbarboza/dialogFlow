@@ -1,12 +1,12 @@
 console.log("in process message");
 
-
+console.log(process.env);
 
 const dialogflow = require('dialogflow');
 const uuid = require('uuid');
 
 
-async function runSample(projectId = 'chatbotproject-eklmvw') {
+async function runSample(projectId = process.env.PROJECT_ID) {
   console.log("in the runSample func");
   // A unique identifier for the given session
   const sessionId = uuid.v4();
@@ -34,11 +34,15 @@ async function runSample(projectId = 'chatbotproject-eklmvw') {
   const result = responses[0].queryResult;
   console.log(`  Query: ${result.queryText}`);
   console.log(`  Response: ${result.fulfillmentText}`);
-  if (result.intent) {
-    console.log(`  Intent: ${result.intent.displayName}`);
-  } else {
-    console.log(`  No intent matched.`);
-  }
+  return result.fulfillmentText;
+
+  // if (result.intent) {
+  //   console.log(`  Intent: ${result.intent.displayName}`);
+  // } else {
+  //   console.log(`  No intent matched.`);
+  // }
 }
 
-runSample();
+// runSample();
+
+module.exports = runSample;
