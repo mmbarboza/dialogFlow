@@ -1,15 +1,20 @@
 import React from 'react';
 import BotUI from 'botui';
+require("@babel/polyfill");
+import axios from 'axios';
+
 
 
 
 export default class ChatBot extends React.Component{
   constructor(){
-    super()
+    super();
     this.state = {
       userMessage: '',
       conversation: [],
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event){
@@ -17,10 +22,16 @@ export default class ChatBot extends React.Component{
     this.setState({userMessage: event.target.value});
   }
 
-  handleSubmit(event){
+  async handleSubmit(event){
     event.preventDefault();
     this.setState({
       conversation: [...this.state.conversation, this.state.userMessage]
+    })
+    const chatReply = await axios.get('/runSample');
+    console.log(chatReply)
+    this.setState({
+      conversation: [...this.state.conversation, chatReply.data],
+      userMessage: ''
     })
   }
 
@@ -28,9 +39,10 @@ export default class ChatBot extends React.Component{
 
     return (
       <div>
+        <div>{this.state.conversation}</div>
         <form onSubmit={this.handleSubmit}>
 
-          <input value = {this.state.userMessage} onChange={this.handleChange}/>
+          <input type="text" value = {this.state.userMessage} onChange={this.handleChange} placeholder="Type your message and hit enter" />
         </form>
       </div>
     );
