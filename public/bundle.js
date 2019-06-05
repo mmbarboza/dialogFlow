@@ -294,17 +294,18 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
                     conversation: [].concat(_toConsumableArray(this.state.conversation), [this.state.userMessage])
                   });
                   _context.next = 4;
-                  return _axios2["default"].get('/runSample');
+                  return _axios2["default"].post("/runSample/".concat(this.state.userMessage));
 
                 case 4:
                   chatReply = _context.sent;
-                  console.log(chatReply);
+                  console.log("user message", this.state.userMessage);
+                  console.log("robot response", chatReply);
                   this.setState({
                     conversation: [].concat(_toConsumableArray(this.state.conversation), [chatReply.data]),
                     userMessage: ''
                   });
 
-                case 7:
+                case 8:
                 case "end":
                   return _context.stop();
               }

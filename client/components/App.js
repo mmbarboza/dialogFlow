@@ -27,8 +27,9 @@ export default class ChatBot extends React.Component{
     this.setState({
       conversation: [...this.state.conversation, this.state.userMessage]
     })
-    const chatReply = await axios.get('/runSample');
-    console.log(chatReply)
+    const chatReply = await axios.post(`/runSample/${this.state.userMessage}`);
+    console.log("user message", this.state.userMessage)
+    console.log("robot response", chatReply)
     this.setState({
       conversation: [...this.state.conversation, chatReply.data],
       userMessage: ''

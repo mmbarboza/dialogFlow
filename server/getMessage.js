@@ -6,8 +6,9 @@ const dialogflow = require('dialogflow');
 const uuid = require('uuid');
 
 
-async function runSample(projectId = process.env.PROJECT_ID) {
+async function runSample(userInput, projectId = process.env.PROJECT_ID) {
   console.log("in the runSample func");
+  console.log("userinput", userInput)
   // A unique identifier for the given session
   const sessionId = uuid.v4();
 
@@ -21,7 +22,7 @@ async function runSample(projectId = process.env.PROJECT_ID) {
     queryInput: {
       text: {
         // The query to send to the dialogflow agent
-        text: 'how are you',
+        text: userInput,
         // The language used by the client (en-US)
         languageCode: 'en-US',
       },

@@ -25,9 +25,10 @@ app.listen(port, function () {
 
 // mount api routes on apiRoutes
 //app.use('/api', require('../apiRoutes')); // matches all requests to /api
-app.get('/runSample', async(req, res, next) => {
+app.post('/runSample/:userMessage', async(req, res, next) => {
+  console.log("req body", req.body)
   console.log(runSample());
-  const answer = await runSample();
+  const answer = await runSample(req.params.userMessage);
   res.send(answer);
 });
 
