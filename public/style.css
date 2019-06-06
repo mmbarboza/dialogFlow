@@ -1,7 +1,70 @@
-.main {
-  background: linear-gradient(#ffffff, lightblue);
-  align-items: center;
+html, body {
+  font: 14px/1.21 'Helvetica Neue', arial, sans-serif;
+  font-weight: 400;
+  box-sizing: border-box;
+  background-color: darkslateblue;
+  color: whitesmoke
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.chat-window {
+  width: 750px;
+  margin: auto;
+  border: 1px solid #d5d5d5;
+}
+
+.conversation-view {
+  width: 100%;
+  min-height: 570px;
+  padding: 20px 40px;
+  background-color: white;
+}
+
+.message-box {
+  width: 100%;
+  padding: 20px 20px;
+  background-color: whitesmoke;
+}
+
+.text-input {
+  width: 100%;
+  border: none;
+  padding: 5px;
+}
+
+.chat-bubble {
+  font-size: 20px;
+  margin-bottom: 20px;
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+}
+
+.chat-bubble.human {
+  justify-content: flex-end;
+}
+
+.chat-bubble.ai .chat-content {
+  background-color: white;
+  border-color: darkslateblue;
+  color: darkslateblue
+}
+
+.chat-content {
+  display: inline-block;
+  padding: 8px 15px;
+  background-color: darkslateblue;
+  color: white;
+  border-radius: 10px;
+  border-color: darkslateblue
 }
