@@ -28,7 +28,7 @@ h1 {
   width: 100%;
   min-height: 570px;
   padding: 20px 40px;
-  background-color: white;
+  background-color: whitesmoke;
 }
 
 .message-box {
@@ -55,9 +55,9 @@ h1 {
 }
 
 .chat-bubble.ai .chat-content {
-  background-color: white;
+  background-color: gray;
   border-color: darkslateblue;
-  color: darkslateblue
+  color: white
 }
 
 .chat-content {
